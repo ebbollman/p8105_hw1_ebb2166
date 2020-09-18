@@ -13,9 +13,9 @@ library(tidyverse)
 
 ## Problem 1
 
-Create a date frame with the specified elements.
+step 1: Create a date frame with the specified elements.
 
-```{r dataframe creation}
+```{r dataframe_creation}
 prob1_df =
   tibble(
     samp = rnorm(10),
@@ -26,9 +26,9 @@ prob1_df =
 prob1_df
 ```
 
-Take the mean of each variable in my prob1_df data frame.
+step 2: Take the mean of each variable in my prob1_df data frame.
 
-```{r}
+```{r mean_pull_var}
 mean(pull(prob1_df, samp))
 mean(pull(prob1_df, samp_gt_0))
 mean(pull(prob1_df, char_vec))
@@ -37,9 +37,9 @@ mean(pull(prob1_df, factor_vec))
 
 Note: can take mean of numbers and logical vectors, but not character or factor vectors.
 
-Pull each prob1_df variables with as.numeric function to evaluate conversion to numbers.
+step 3: Pull each prob1_df variables with as.numeric function to evaluate conversion to numbers.
 
-```{r}
+```{r convert_numeric}
 as.numeric(pull(prob1_df, samp))
 as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, char_vec))
@@ -48,7 +48,15 @@ as.numeric(pull(prob1_df, factor_vec))
 
 Note: when using as.numeric function, can convert factor to number, but this does not work with character vectors.
 
+step 4: practice manipulations, converting logical vector to numeric or factor and multiplications.
 
+```{r logical_vec_manipulations}
+as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
+```
+
+Note: the second transformation did not produce valid result, because cannot multiply a categorical variable such as factor. But converting vector into factor, and then into a number, did allow for multiplication. 
 
 ## Problem 2
 
