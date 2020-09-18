@@ -26,6 +26,29 @@ prob1_df =
 prob1_df
 ```
 
+Take the mean of each variable in my prob1_df data frame.
+
+```{r}
+mean(pull(prob1_df, samp))
+mean(pull(prob1_df, samp_gt_0))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, factor_vec))
+```
+
+Note: can take mean of numbers and logical vectors, but not character or factor vectors.
+
+Pull each prob1_df variables with as.numeric function to evaluate conversion to numbers.
+
+```{r}
+as.numeric(pull(prob1_df, samp))
+as.numeric(pull(prob1_df, samp_gt_0))
+as.numeric(pull(prob1_df, char_vec))
+as.numeric(pull(prob1_df, factor_vec))
+```
+
+Note: when using as.numeric function, can convert factor to number, but this does not work with character vectors.
+
+
 
 ## Problem 2
 
