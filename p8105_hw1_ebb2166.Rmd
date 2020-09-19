@@ -39,7 +39,7 @@ Note: can take mean of numbers and logical vectors, but not character or factor 
 
 ##### Step 3: Pull each prob1_df variables with as.numeric function to evaluate conversion to numbers.
 
-```{r convert_numeric}
+```{r convert_numeric, eval=FALSE}
 as.numeric(pull(prob1_df, samp))
 as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, char_vec))
@@ -60,3 +60,14 @@ Note: the second transformation did not produce valid result, because cannot mul
 
 ## Problem 2
 
+##### Step 1: load and describe penguins dataset.
+
+```{r penguins data, results='hide'}
+data("penguins", package = "palmerpenguins")
+penguins
+summary(penguins)
+```
+
+This is a dataset describing `r n_distinct(penguins$species)` species of penguins known as `r unique(penguins$species)`. The data was collected on `r n_distinct(penguins$island)` islands: `r unique(penguins$island)`. Observations were collected on `r nrow(penguins)` penguins for `r ncol(penguins)` variables between the years `r range(penguins$year)[1]` and `r range(penguins$year)[2]`.
+
+The mean flipper length of all penguins was `r mean(penguins$flipper_length_mm, na.rm = TRUE)`mm. The mean bill length of all penguins was `r mean(penguins$bill_length_mm, na.rm = TRUE)`mm.
