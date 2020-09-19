@@ -71,3 +71,14 @@ summary(penguins)
 This is a dataset describing `r n_distinct(penguins$species)` species of penguins known as `r unique(penguins$species)`. The data was collected on `r n_distinct(penguins$island)` islands: `r unique(penguins$island)`. Observations were collected on `r nrow(penguins)` penguins for `r ncol(penguins)` variables between the years `r range(penguins$year)[1]` and `r range(penguins$year)[2]`.
 
 The mean flipper length of all penguins was `r mean(penguins$flipper_length_mm, na.rm = TRUE)`mm. The mean bill length of all penguins was `r mean(penguins$bill_length_mm, na.rm = TRUE)`mm.
+
+##### Step 2: make a scatterplot of flipper length vs bill length.
+
+```{r}
+ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point() + 
+  labs(x = "Bill length", y = "Flipper length",
+       title = "Flipper length by bill length scatterplot")
+ggsave("Flipper_length_scatterplot.pdf", width = 4, height = 4)
+```
+
+This is a scatterplot representing penguins' flipper length in relation to bill length, separated by species. 
